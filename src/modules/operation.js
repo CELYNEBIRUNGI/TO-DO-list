@@ -10,7 +10,7 @@ export function addList(allList, desc) {
 
 export function removeList(index, allList) {
   allList.splice(index, 1);
-  for (let i = index; i < allList.length; i++) {
+  for (let i = index; i < allList.length; i += 1) {
     allList[i].index = i + 1;
   }
   localStorage.setItem('todo', JSON.stringify(allList));

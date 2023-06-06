@@ -17,7 +17,7 @@ arrow.addEventListener('click', () => {
 });
 
 bkList.addEventListener('click', (event) => {
-  const target = event.target;
+  const { target } = event;
 
   if (target.classList.contains('delete')) {
     const listItem = target.parentNode;
@@ -29,7 +29,7 @@ bkList.addEventListener('click', (event) => {
 });
 
 bkList.addEventListener('input', (event) => {
-  const target = event.target;
+  const { target } = event;
 
   if (target.classList.contains('list-desc')) {
     const listItem = target.parentNode;
