@@ -1,5 +1,4 @@
 import displayList from './modules/display.js';
-
 import { addList, removeList, editList } from './modules/operation.js';
 
 // import './index.css';
