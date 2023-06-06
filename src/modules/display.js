@@ -4,7 +4,7 @@ const displayList = (lists, allList) => {
     const itemDiv = document.createElement('div');
     const checkbox = document.createElement('input');
     const label = document.createElement('label');
-    const dots = document.createElement('i');
+    const deleteIcon = document.createElement('i');
     itemDiv.className = `${list.index}`;
     label.className = 'list-desc';
     listItem.className = `items ${list.index}`;
@@ -15,11 +15,11 @@ const displayList = (lists, allList) => {
     checkbox.checked = list.completed;
     label.textContent = list.description;
     label.setAttribute('contenteditable', 'true');
-    dots.className = 'fa fa-ellipsis-v dots';
+    deleteIcon.className = 'fa fa-trash delete'; // Assign the delete icon class
     itemDiv.appendChild(checkbox);
     itemDiv.appendChild(label);
     listItem.appendChild(itemDiv);
-    listItem.appendChild(dots);
+    listItem.appendChild(deleteIcon); // Append the delete icon element
     return listItem;
   };
   allList.forEach((list) => {
@@ -27,4 +27,5 @@ const displayList = (lists, allList) => {
     lists.appendChild(listItem);
   });
 };
+
 export default displayList;

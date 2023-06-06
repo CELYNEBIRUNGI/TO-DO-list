@@ -7,14 +7,15 @@ export function addList(allList, desc) {
   allList.push(newList);
   localStorage.setItem('todo', JSON.stringify(allList));
 }
+
 export function removeList(index, allList) {
-  const ind = parseInt(index.match(/\d+/)[0], 10);
-  allList.splice(ind - 1, 1);
-  for (let i = 0; i < allList.length; i += 1) {
+  allList.splice(index, 1);
+  for (let i = index; i < allList.length; i++) {
     allList[i].index = i + 1;
   }
   localStorage.setItem('todo', JSON.stringify(allList));
 }
+
 export function editList(index, newDesc, allList) {
   allList[index].description = newDesc;
   localStorage.setItem('todo', JSON.stringify(allList));
