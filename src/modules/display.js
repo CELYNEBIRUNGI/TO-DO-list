@@ -28,4 +28,3 @@ const displayList = (lists, allList) => {
     });
   };
   export default displayList;
-  
