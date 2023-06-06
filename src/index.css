@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #ddadda;
+  background-color: hsl(304, 41%, 77%);
   width: 90vw;
   height: 90vh;
   display: flex;
@@ -100,4 +100,16 @@ body {
 
 .dots {
   color: #8f8e8edd;
+}
+
+.checkbox {
+  margin-right: 5px;
+}
+
+.list-desc {
+  width: 100%;
+}
+
+.list-desc:focus {
+  outline: none;
 }

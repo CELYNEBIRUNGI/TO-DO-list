@@ -1,34 +1,28 @@
+import displayList from './modules/display.js';
+import { addList, removeList, editList } from './modules/operation.js';
 import './index.css';
 
-const allList = [
-  {
-    index: 1,
-    description: 'Tailwind Library',
-    complated: false,
-  },
-  {
-    index: 2,
-    description: 'Bootstrap Framework',
-    complated: false,
-  },
-  {
-    index: 3,
-    description: 'Bulmas Library',
-    complated: false,
-  },
-];
+const allList = JSON.parse(localStorage.getItem('todo')) || [];
 const bkList = document.querySelector('.lists');
-const displayList = () => {
-  for (let i = 0; i < allList.length; i += 1) {
-    bkList.innerHTML += `
-    <div class='items'>
-      <div class='form-checkbox'>
-        <input type="checkbox" id="check" name="check" >
-        <label class="label" id="label" for="check">${allList[i].description}</label>
-      </div>
-      <i class="fa fa-ellipsis-v dots" aria-hidden="true"></i>
-    </div>
-  `;
-  }
-};
-window.onload = displayList();
+displayList(bkList, allList);
+const edit = document.querySelector('.editTask');
+const arrow = document.querySelector('.arrow');
+arrow.addEventListener('click', () => {
+  addList(allList, edit.value);
+  window.location.reload();
+});
+const dots = document.querySelectorAll('.dots');
+dots.forEach((dot) => {
+  dot.addEventListener('click', () => {
+    removeList(dot.parentNode.className, allList);
+    window.location.reload();
+  });
+});
+const description = document.querySelectorAll('.list-desc');
+description.forEach((desc) => {
+  desc.addEventListener('input', () => {
+    const list = desc.parentNode.className;
+    const newDesc = desc.textContent;
+    editList(list - 1, newDesc, allList);
+  });
+});
