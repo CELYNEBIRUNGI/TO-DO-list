@@ -3,7 +3,6 @@ import { addList, removeList, editList } from './modules/operation.js';
 
 // import './index.css';
 const allList = JSON.parse(localStorage.getItem('todo')) || [];
-
 const bkList = document.querySelector('.lists');
 displayList(bkList, allList);
 const edit = document.querySelector('.editTask');
