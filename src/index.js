@@ -1,5 +1,6 @@
-import displayList from './modules/display.js';
 import { addList, removeList, editList } from './modules/operation.js';
+import { updateStatus, clearCompleted } from './modules/checkout.js';
+import './index.css'
 
 const allList = JSON.parse(localStorage.getItem('todo')) || [];
 const bkList = document.querySelector('.lists');
@@ -37,4 +38,22 @@ bkList.addEventListener('input', (event) => {
 
     editList(listIndex, newDesc, allList);
   }
+});
+
+bkList.addEventListener('change', (event) => {
+  const { target } = event;
+
+  if (target.classList.contains('checkbox')) {
+    const listItem = target.parentNode.parentNode;
+    const listIndex = Array.from(bkList.children).indexOf(listItem);
+    const completed = target.checked;
+
+    updateStatus(listIndex, completed, allList);
+  }
+});
+
+const clearBtn = document.querySelector('.btn-clear');
+clearBtn.addEventListener('click', () => {
+  const updatedList = clearCompleted(allList);
+  displayList(bkList, updatedList);
 });
