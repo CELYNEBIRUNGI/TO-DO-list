@@ -1,18 +1,9 @@
-const displayList = (lists, allList) => {
-  lists.innerHTML = ''; 
-
-  allList.forEach((list) => {
-    const listItem = createListItem(list);
-    lists.appendChild(listItem);
-  });
-};
-
 const createListItem = (list) => {
   const listItem = document.createElement('li');
   const itemDiv = document.createElement('div');
   const checkbox = document.createElement('input');
   const label = document.createElement('label');
-  const deleteIcon = document.createElement('i'); 
+  const deleteIcon = document.createElement('i');
   itemDiv.className = `${list.index}`;
   label.className = 'list-desc';
   listItem.className = `items ${list.index}`;
@@ -27,8 +18,17 @@ const createListItem = (list) => {
   itemDiv.appendChild(checkbox);
   itemDiv.appendChild(label);
   listItem.appendChild(itemDiv);
-  listItem.appendChild(deleteIcon); 
+  listItem.appendChild(deleteIcon);
   return listItem;
+};
+
+const displayList = (lists, allList) => {
+  lists.innerHTML = '';
+
+  allList.forEach((list) => {
+    const listItem = createListItem(list);
+    lists.appendChild(listItem);
+  });
 };
 
 export default displayList;
