@@ -1,34 +1,40 @@
-import './index.css';
+import displayList from './modules/display.js';
+import { addList, removeList, editList } from './modules/operation.js';
 
-const allList = [
-  {
-    index: 1,
-    description: 'Tailwind Library',
-    complated: false,
-  },
-  {
-    index: 2,
-    description: 'Bootstrap Framework',
-    complated: false,
-  },
-  {
-    index: 3,
-    description: 'Bulmas Library',
-    complated: false,
-  },
-];
+const allList = JSON.parse(localStorage.getItem('todo')) || [];
 const bkList = document.querySelector('.lists');
-const displayList = () => {
-  for (let i = 0; i < allList.length; i += 1) {
-    bkList.innerHTML += `
-    <div class='items'>
-      <div class='form-checkbox'>
-        <input type="checkbox" id="check" name="check" >
-        <label class="label" id="label" for="check">${allList[i].description}</label>
-      </div>
-      <i class="fa fa-ellipsis-v dots" aria-hidden="true"></i>
-    </div>
-  `;
+displayList(bkList, allList);
+
+const edit = document.querySelector('.editTask');
+const arrow = document.querySelector('.arrow');
+arrow.addEventListener('click', () => {
+  if (edit.value !== '') {
+    addList(allList, edit.value);
+    edit.value = '';
+    displayList(bkList, allList);
   }
-};
-window.onload = displayList();
+});
+
+bkList.addEventListener('click', (event) => {
+  const { target } = event;
+
+  if (target.classList.contains('delete')) {
+    const listItem = target.parentNode;
+    const listIndex = Array.from(bkList.children).indexOf(listItem);
+
+    removeList(listIndex, allList);
+    listItem.remove();
+  }
+});
+
+bkList.addEventListener('input', (event) => {
+  const { target } = event;
+
+  if (target.classList.contains('list-desc')) {
+    const listItem = target.parentNode;
+    const listIndex = Array.from(bkList.children).indexOf(listItem);
+    const newDesc = target.textContent;
+
+    editList(listIndex, newDesc, allList);
+  }
+});

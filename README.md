@@ -120,6 +120,7 @@ To run tests, run the following command:
 You can deploy this project using:
 
 GitHub Pages
+ I will provide the link when the project is full complete
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -165,7 +166,7 @@ I would like to thank Microverse and all My Micronauts partners for their help o
 
 ## 📝 License <a name="license"></a>
 
-This project is [LICENSE](./LICENSE) licensed.
+This project is [MIT](./LICENSE) licensed.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
