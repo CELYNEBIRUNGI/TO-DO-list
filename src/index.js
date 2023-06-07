@@ -11,8 +11,7 @@ arrow.addEventListener('click', () => {
   if (edit.value !== '') {
     addList(allList, edit.value);
     edit.value = '';
-    bkList.textContent = '';
-    displayList(bkList, allList);
+    displayList(bkList, allList); 
   }
 });
 
